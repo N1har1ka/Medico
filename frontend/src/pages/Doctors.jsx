@@ -6,6 +6,7 @@ const Doctors = () => {
   const { speciality } = useParams();
   const { doctors } = useContext(AppContext);
   const navigate = useNavigate();
+  const [showfilter, setShowFilter] = useState(false);
   const [filterDoc, setFilterDoc] = useState([]);
   const applyFilter = () => {
     if (speciality) {
@@ -21,13 +22,26 @@ const Doctors = () => {
     <div>
       <p className="text-gray-600">Browse through the doctors specialist.</p>
       <div className="flex flex-col sm:flex-row items-start gap-5 mt-5">
-        <div className="flex flex-col gap-4 text-sm text-gray-600">
+        <button
+          className={`py-1 px-3 border rounded text-sm transition-all sm:hidden ${
+            showfilter ? "bg-primary" : ""
+          }`}
+          onClick={() => setShowFilter((prev) => !prev)}
+        >
+          Filters
+        </button>
+        <div
+          className={`${
+            showfilter ? "flex" : "hidden sm:flex"
+          }  flex-col gap-4 text-sm text-gray-600`}
+        >
           <p
-            onClick={() =>
+            onClick={() => {
+              setShowFilter(false);
               speciality === "General physician"
                 ? navigate("/doctors")
-                : navigate("/doctors/General physician")
-            }
+                : navigate("/doctors/General physician");
+            }}
             className={` ${
               speciality === "General physician"
                 ? "bg-indigo-100 text-black"
@@ -37,11 +51,12 @@ const Doctors = () => {
             General physician
           </p>
           <p
-            onClick={() =>
+            onClick={() => {
+              setShowFilter(false);
               speciality === "Gynecologist"
                 ? navigate("/doctors")
-                : navigate("/doctors/Gynecologist")
-            }
+                : navigate("/doctors/Gynecologist");
+            }}
             className={` ${
               speciality === "Gynecologist" ? "bg-indigo-100 text-black" : ""
             } w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}
@@ -49,11 +64,12 @@ const Doctors = () => {
             Gynecologist
           </p>
           <p
-            onClick={() =>
+            onClick={() => {
+              setShowFilter(false);
               speciality === "Dermatologist"
                 ? navigate("/doctors")
-                : navigate("/doctors/Dermatologist")
-            }
+                : navigate("/doctors/Dermatologist");
+            }}
             className={` ${
               speciality === "Dermatologist" ? "bg-indigo-100 text-black" : ""
             } w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}
@@ -61,11 +77,12 @@ const Doctors = () => {
             Dermatologist
           </p>
           <p
-            onClick={() =>
+            onClick={() => {
+              setShowFilter(false);
               speciality === "Pediatricians"
                 ? navigate("/doctors")
-                : navigate("/doctors/Pediatricians")
-            }
+                : navigate("/doctors/Pediatricians");
+            }}
             className={` ${
               speciality === "Pediatricians" ? "bg-indigo-100 text-black" : ""
             } w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}
@@ -73,11 +90,12 @@ const Doctors = () => {
             Pediatricians
           </p>
           <p
-            onClick={() =>
+            onClick={() => {
+              setShowFilter(false);
               speciality === "Neurologist"
                 ? navigate("/doctors")
-                : navigate("/doctors/Neurologist")
-            }
+                : navigate("/doctors/Neurologist");
+            }}
             className={` ${
               speciality === "Neurologist" ? "bg-indigo-100 text-black" : ""
             } w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}
@@ -85,11 +103,12 @@ const Doctors = () => {
             Neurologist
           </p>
           <p
-            onClick={() =>
+            onClick={() => {
+              setShowFilter(false);
               speciality === "Gastroenterologist"
                 ? navigate("/doctors")
-                : navigate("/doctors/Gastroenterologist")
-            }
+                : navigate("/doctors/Gastroenterologist");
+            }}
             className={` ${
               speciality === "Gastroenterologist"
                 ? "bg-indigo-100 text-black"
