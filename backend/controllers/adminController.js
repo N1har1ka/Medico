@@ -50,6 +50,13 @@ const addDoctor = async (req, res) => {
       resource_type: "image",
     });
     const imageUrl = imageUpload.secure_url;
+    let parsedAddress;
+    try {
+      parsedAddress = JSON.parse(address);
+    } catch (err) {
+      return res.json({ success: false, message: "Invalid address format" });
+    }
+
     const doctorData = {
       name,
       email,
@@ -60,7 +67,7 @@ const addDoctor = async (req, res) => {
       experience,
       about,
       fees,
-      address,
+      address: parsedAddress,
       available: true,
       date: Date.now(),
     };
@@ -71,7 +78,7 @@ const addDoctor = async (req, res) => {
 
     res.json({
       success: true,
-      message: "Doctor added successfully (mock response)",
+      message: "Doctor added successfully.",
     });
   } catch (error) {
     res.json({ success: false, message: "Server error", error });
@@ -95,4 +102,15 @@ const loginAdmin = async (req, res) => {
     res.json({ success: false, message: error.message });
   }
 };
-export { addDoctor, loginAdmin };
+
+const allDoctors = async (req, res) => {
+  try {
+    const doctors = await doctorModel.find({}).select("-password");
+    res.json({ success: true, doctors });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export { addDoctor, loginAdmin, allDoctors };

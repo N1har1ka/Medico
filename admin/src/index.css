@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import "tailwindcss";
+/* @plugin daysui; */
+* {
+  font-family: Outfit;
+}
+@theme {
+  /* --breakpoint-sm: 400px; */
+  --color-primary: #5f6fff;
+}
+/* .active hr {
+  @apply block;
+} */
+::-webkit-scrollbar {
+  @apply hidden;
+}
+/* .grid-cols-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+@media (max-width: 770px) {
+  .active p {
+    @apply text-white bg-primary;
+  }
+} */
