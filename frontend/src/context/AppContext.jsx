@@ -29,11 +29,11 @@ const AppContextProvider = (props) => {
   };
   const loadUserProfileData = async () => {
     try {
-      console.log("Calling loadUserProfileData with token:", token);
+      // console.log("Calling loadUserProfileData with token:", token);
       const { data } = await axios.get(backendUrl + "/api/user/get-profile", {
         headers: { token }, // consider switching to Authorization header later
       });
-      console.log("User data from backend:", data);
+      // console.log("User data from backend:", data);
 
       if (data.success) {
         setUserData(data.userData);
@@ -49,6 +49,7 @@ const AppContextProvider = (props) => {
   const value = {
     doctors,
     currencySymbol,
+    getDoctorsData,
     token,
     setToken,
     backendUrl,
