@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 
@@ -10,7 +10,8 @@ const AdminContextProvider = (props) => {
   );
   const [doctors, setDoctors] = useState([]);
   const backendUrl = import.meta.env.VITE_BACKEND_URL;
-
+  const [appointments, setAppointments] = useState([]);
+  const [dashData, setDashData] = useState(false);
   const getAllDoctors = async () => {
     try {
       const { data } = await axios.post(
@@ -44,7 +45,53 @@ const AdminContextProvider = (props) => {
       toast.error(error.message);
     }
   };
-
+  const getAllAppointments = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + "/api/admin/appointments", {
+        headers: { aToken },
+      });
+      if (data.success) {
+        // console.log(data.appointments);
+        setAppointments(data.appointments);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  const cancelAppointment = async (appointmentId) => {
+    try {
+      const { data } = await axios.post(
+        backendUrl + "/api/admin/cancel-appointment",
+        { appointmentId },
+        { headers: { aToken } }
+      );
+      if (data.success) {
+        toast.success(data.message);
+        getAllAppointments();
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+  const getDashData = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + "/api/admin/dashboard", {
+        headers: { aToken },
+      });
+      if (data.success) {
+        setDashData(data.dashData);
+        console.log(data.dashData);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
   const value = {
     aToken,
     setAToken,
@@ -52,6 +99,12 @@ const AdminContextProvider = (props) => {
     getAllDoctors,
     doctors,
     changeAvailability,
+    appointments,
+    setAppointments,
+    getAllAppointments,
+    cancelAppointment,
+    dashData,
+    getDashData,
   };
 
   return (
