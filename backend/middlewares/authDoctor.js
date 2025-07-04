@@ -11,7 +11,7 @@ const authDoctor = async (req, res, next) => {
     }
     const token_decode = jwt.verify(dtoken, process.env.JWT_SECRET);
     req.docId = token_decode.id;
-    // console.log(req.userId);
+    // console.log(req.docId);
     next();
   } catch (error) {
     console.log(error);
