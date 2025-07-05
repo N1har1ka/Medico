@@ -23,8 +23,8 @@ const MyProfile = () => {
   const [isEdit, setIsEdit] = useState(false);
   const updateUserProfileData = async () => {
     try {
-      console.log("Address before submit:", userData.address);
-      console.log("Submitting userData:", userData);
+      // console.log("Address before submit:", userData.address);
+      // console.log("Submitting userData:", userData);
 
       const formData = new FormData();
       formData.append("name", userData.name);
@@ -191,14 +191,14 @@ const MyProfile = () => {
         <div className="mt-10">
           {isEdit ? (
             <button
-              className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300"
+              className="border border-primary px-8 py-2 rounded-full hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer"
               onClick={updateUserProfileData}
             >
               Save Information
             </button>
           ) : (
             <button
-              className="border border-primary px-8 py-2 rounded-full  hover:bg-primary hover:text-white transition-all duration-300"
+              className="border border-primary px-8 py-2 rounded-full  hover:bg-primary hover:text-white transition-all duration-300 cursor-pointer"
               onClick={() => setIsEdit(true)}
             >
               Edit

@@ -1,77 +1,110 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { assets } from "../assets/assets";
 import { NavLink, useNavigate } from "react-router-dom";
 import { AppContext } from "../context/AppContext";
+
 const Navbar = () => {
   const navigate = useNavigate();
-  const [showMenu, setShowMenu] = useState(false);
-  // const [token, setToken] = useState(true);
   const { token, setToken, userData } = useContext(AppContext);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const dropdownRef = useRef();
+
   const logout = () => {
     setToken(false);
     localStorage.removeItem("token");
+    setShowDropdown(false);
   };
+
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
     <div className="flex items-center justify-between text-sm py-4 mb-5 border-b border-b-gray-400">
-      <img
+      <div
         onClick={() => {
           navigate("/");
         }}
-        className="cursor-pointer"
-        src={assets.logo}
-        alt=""
-      />
+        className="flex items-center"
+      >
+        <img className="w-12 cursor-pointer" src={assets.logo} alt="" />
+        <p className="text-3xl font-medium cursor-pointer">Medico</p>
+      </div>
+
+      {/* Main Navigation */}
       <ul className="hidden md:flex items-start gap-5 font-medium">
         <NavLink to="/">
           <li className="py-1">HOME</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/doctors">
           <li className="py-1">ALL DOCTORS</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/about">
           <li className="py-1">ABOUT</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
         <NavLink to="/contact">
           <li className="py-1">CONTACT</li>
-          <hr className="border-none outline-none h-0.5 bg-primary w-3/5 m-auto hidden" />
         </NavLink>
       </ul>
+
       <div className="flex items-center gap-4">
-        {token && userData ? (
-          <div className="flex items-center gap-2 cursor-pointer group relative">
-            <img className="w-8 rounded-full" src={userData.image} alt="" />
-            <img className="w-2.5" src={assets.dropdown_icon} alt="" />
-            <div className="absolute top-0 right-0 pt-14 text-base font-medium text-gray-600 z-20 hidden group-hover:block">
-              <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4">
-                <p
-                  onClick={() => {
-                    navigate("/my-profile");
-                  }}
-                  className="hover:text-black cursor-pointer"
-                >
-                  My Profile
-                </p>
-                <p
-                  onClick={() => {
-                    navigate("/my-appointments");
-                  }}
-                  className="hover:text-black cursor-pointer"
-                >
-                  My appointments
-                </p>
-                <p onClick={logout} className="hover:text-black cursor-pointer">
-                  Logout
-                </p>
+        {token !== "" && userData ? (
+          <div className="flex items-center gap-2 relative" ref={dropdownRef}>
+            <img
+              className="w-8 rounded-full cursor-pointer"
+              src={userData.image}
+              alt=""
+              onClick={() => setShowDropdown((prev) => !prev)}
+            />
+            <img
+              className="w-2.5 cursor-pointer"
+              src={assets.dropdown_icon}
+              alt=""
+              onClick={() => setShowDropdown((prev) => !prev)}
+            />
+            {showDropdown && (
+              <div className="absolute top-15 right-0 text-base font-medium text-gray-600 z-20">
+                <div className="min-w-48 bg-stone-100 rounded flex flex-col gap-4 p-4 shadow-md">
+                  <p
+                    onClick={() => {
+                      navigate("/my-profile");
+                      setShowDropdown(false);
+                    }}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    My Profile
+                  </p>
+                  <p
+                    onClick={() => {
+                      navigate("/my-appointments");
+                      setShowDropdown(false);
+                    }}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    My Appointments
+                  </p>
+                  <p
+                    onClick={logout}
+                    className="hover:text-black cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         ) : (
           <button
             onClick={() => navigate("/login")}
-            className="bg-primary text-white px-8 py-3 rounded-full font-light hidden md:block"
+            className="bg-primary text-white px-8 py-3 rounded-full font-light block"
           >
             Create Account
           </button>
@@ -83,12 +116,14 @@ const Navbar = () => {
           alt=""
         />
         <div
-          className={`${
-            showMenu ? "fixed  w-full" : "h-0 w-0"
-          } md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}
+          className={`fixed right-0 top-0 bottom-0 z-50 bg-white transition-all duration-300 ease-in-out ${
+            showMenu
+              ? "w-full opacity-100 pointer-events-auto"
+              : "w-0 opacity-0 pointer-events-none"
+          }`}
         >
           <div className="flex items-center justify-between px-5 py-6">
-            <img className="w-36" src={assets.logo} alt="" />
+            <img className="w-12" src={assets.logo} alt="" />
             <img
               className="w-7 cursor-pointer"
               onClick={() => setShowMenu(false)}

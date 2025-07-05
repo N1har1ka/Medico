@@ -131,7 +131,8 @@ const MyAppointments = () => {
           >
             <div>
               <img
-                className="w-32 bg-indigo-50"
+                onClick={() => navigate(`/appointment/${item.docData._id}`)}
+                className="w-32 bg-indigo-50 cursor-pointer"
                 src={item.docData.image}
                 alt=""
               />
@@ -161,7 +162,7 @@ const MyAppointments = () => {
               {!item.cancelled && !item.payment && !item.isCompleted && (
                 <button
                   onClick={() => appointmentRazorpay(item._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:text-white hover:bg-primary transition-all duration-300"
+                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:text-white hover:bg-primary transition-all duration-300 cursor-pointer"
                 >
                   Pay Online
                 </button>
@@ -169,7 +170,7 @@ const MyAppointments = () => {
               {!item.cancelled && !item.isCompleted && (
                 <button
                   onClick={() => cancelAppointment(item._id)}
-                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:text-white hover:bg-red-600 transition-all duration-300"
+                  className="text-sm text-stone-500 text-center sm:min-w-48 py-2 border rounded hover:text-white hover:bg-red-600 transition-all duration-300 cursor-pointer"
                 >
                   Cancel Appointment
                 </button>

@@ -38,17 +38,17 @@ const Doctors = () => {
           <p
             onClick={() => {
               setShowFilter(false);
-              speciality === "General physician"
+              speciality === "General Physician"
                 ? navigate("/doctors")
-                : navigate("/doctors/General physician");
+                : navigate("/doctors/General Physician");
             }}
             className={` ${
-              speciality === "General physician"
+              speciality === "General Physician"
                 ? "bg-indigo-100 text-black"
                 : ""
             } w-[94vw] sm:w-auto pl-3 py-1.5 pr-16 border border-gray-300 rounded transition-all cursor-pointer`}
           >
-            General physician
+            General Physician
           </p>
           <p
             onClick={() => {

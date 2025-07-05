@@ -20,7 +20,7 @@ const Appointment = () => {
 
   useEffect(() => {
     const found = doctors.find((doc) => doc._id === docId);
-    console.log("Doctor Info Found:", found);
+    // console.log("Doctor Info Found:", found);
     setDocInfo(found);
   }, [doctors, docId]);
 
@@ -199,7 +199,7 @@ const Appointment = () => {
 
         <button
           onClick={bookAppointment}
-          className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6"
+          className="bg-primary text-white text-sm font-light px-14 py-3 rounded-full my-6 cursor-pointer"
         >
           Book an appointment
         </button>

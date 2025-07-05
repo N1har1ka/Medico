@@ -16,13 +16,17 @@ const Navbar = () => {
     dToken && localStorage.removeItem("dToken");
   };
   return (
-    <div className="flex justify-between items-center px-4 sm:px-10 py-3 border-b bg-white">
+    <div className="flex justify-between items-center px-4 sm:px-10 py-3 border-b border-indigo-200 bg-white">
       <div className="flex items-center gap-2 text-xs">
-        <img
-          className="w-36 sm:w-40 cursor-pointer"
-          src={assets.admin_logo}
-          alt=""
-        />
+        <div
+          onClick={() => {
+            navigate("/");
+          }}
+          className="flex items-center"
+        >
+          <img className="w-12 cursor-pointer" src={assets.logo} alt="" />
+          <p className="text-3xl font-medium cursor-pointer">Medico</p>
+        </div>
         <p className="border px-2.5 py-0.5 rounded-full border-gray-500 text-gray-600">
           {aToken ? "Admin" : "Doctor"}
         </p>

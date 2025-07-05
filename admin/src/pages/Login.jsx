@@ -34,7 +34,7 @@ const Login = () => {
         if (data.success) {
           localStorage.setItem("dToken", data.token);
           setDToken(data.token);
-          console.log(data);
+          // console.log(data);
         } else {
           toast.error(data.message);
         }
@@ -59,6 +59,7 @@ const Login = () => {
             className="border border-[#DADADA] rounded w-full p-2 mt-1 "
             type="email"
             required
+            autoComplete="username"
           />
         </div>
         <div className="w-full">
@@ -70,6 +71,7 @@ const Login = () => {
             className="border border-[#DADADA] rounded w-full p-2 mt-1 "
             type="password"
             required
+            autoComplete="current-password"
           />
         </div>
         <button className="bg-primary text-white w-full py-2 rounded-md text-base cursor-pointer">

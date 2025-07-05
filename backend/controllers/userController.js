@@ -93,6 +93,13 @@ const updateProfile = async (req, res) => {
       const imgUrl = imageUpload.secure_url;
       await userModel.findByIdAndUpdate(req.userId, { image: imgUrl });
     }
+    const updatedUser = await userModel
+      .findById(req.userId)
+      .select("-password");
+    await appointmentModel.updateMany(
+      { userId: req.userId }, // filter appointments of this user
+      { $set: { userData: updatedUser } } // set new embedded data
+    );
     return res.json({ success: true, message: "profile updated" });
   } catch (error) {
     console.log(error);

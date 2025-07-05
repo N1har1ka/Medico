@@ -67,7 +67,7 @@ const AddDoctor = () => {
   return (
     <form onSubmit={onSubmitHandler} className="m-5 w-full">
       <p className="mb-3 text-lg font-medium">Add Doctor</p>
-      <div className="bg-white px-8 py-8 border rounded w-full max-w-4xl max-h-[80vh] overflow-y-scroll">
+      <div className="bg-white px-8 py-8 border border-indigo-200 rounded w-full max-w-4xl max-h-[80vh] overflow-y-scroll">
         <div className="flex items-center  gap-4 mb-8 text-gray-500">
           <label htmlFor="doc-img">
             <img
@@ -94,7 +94,7 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setName(e.target.value)}
                 value={name}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="text"
                 placeholder="Name"
                 required
@@ -105,10 +105,11 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="email"
                 placeholder="Email"
                 required
+                autoComplete="username"
               />
             </div>
             <div className="flex-1 flex flex-col gap-1">
@@ -116,10 +117,11 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="password"
                 placeholder="Password"
                 required
+                autoComplete="new-password"
               />
             </div>
             <div className="flex-1 flex flex-col gap-1">
@@ -127,9 +129,9 @@ const AddDoctor = () => {
               <select
                 onChange={(e) => setExperience(e.target.value)}
                 value={experience}
-                className="border rounded px-3 py-2"
-                name=""
-                id=""
+                className="border border-indigo-200 rounded px-3 py-2"
+                name="experience"
+                id="experience"
               >
                 <option value="1 year">1 year</option>
                 <option value="2 year">2 year</option>
@@ -148,9 +150,9 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setFees(e.target.value)}
                 value={fees}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="number"
-                placeholder="fees"
+                placeholder="Fees"
                 required
               />
             </div>
@@ -161,7 +163,7 @@ const AddDoctor = () => {
               <select
                 onChange={(e) => setSpeciality(e.target.value)}
                 value={speciality}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 name=""
                 id=""
               >
@@ -178,7 +180,7 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setDegree(e.target.value)}
                 value={degree}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="text"
                 placeholder="Education"
                 required
@@ -189,7 +191,7 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setAddress1(e.target.value)}
                 value={address1}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="text"
                 placeholder="Address1"
                 required
@@ -197,7 +199,7 @@ const AddDoctor = () => {
               <input
                 onChange={(e) => setAddress2(e.target.value)}
                 value={address2}
-                className="border rounded px-3 py-2"
+                className="border border-indigo-200 rounded px-3 py-2"
                 type="text"
                 placeholder="Address2"
                 required
@@ -210,7 +212,7 @@ const AddDoctor = () => {
           <textarea
             onChange={(e) => setAbout(e.target.value)}
             value={about}
-            className="w-full px-4 pt-2 border rounded"
+            className="w-full px-4 pt-2 border rounded border-indigo-200"
             type="text"
             placeholder="Write about doctor"
             rows={5}
@@ -219,7 +221,7 @@ const AddDoctor = () => {
         </div>
         <button
           type="submit"
-          className="bg-primary px-10 py-3 mt-4 rounded-full text-white"
+          className="bg-primary px-10 py-3 mt-4 rounded-full text-white cursor-pointer"
         >
           Add Doctor
         </button>

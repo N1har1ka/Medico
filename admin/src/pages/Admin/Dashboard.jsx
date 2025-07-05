@@ -14,7 +14,7 @@ const Dashboard = () => {
   }, [aToken]);
   return (
     dashData && (
-      <div className="mb-5">
+      <div className="mb-5 p-5">
         <div className="flex flex-wrap gap-3">
           <div className="flex items-center gap-2 bg-white p-4 min-w-52 rounded border-2 border-gray-100 cursor-pointer hover:scale-105 transition-all">
             <img className="w-14" src={assets.doctor_icon} />
@@ -45,11 +45,11 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="bg-white ">
-          <div className="flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t border">
+          <div className="flex items-center gap-2.5 px-4 py-4 mt-10 rounded-t border border-indigo-200">
             <img src={assets.list_icon} alt="" />
             <p className="font-semibold">Latest Bookings</p>
           </div>
-          <div className="pt-4 border border-t-0">
+          <div className="pt-4 border border-indigo-200  border-t-0">
             {dashData.latestAppointments.map((item, index) => (
               <div
                 className="flex items-center px-6 py-3 gap-3 hover:bg-gray-100 "

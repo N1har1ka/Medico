@@ -4,7 +4,7 @@ import group_profiles from "./group_profiles.png";
 import profile_pic from "./profile_pic.png";
 import contact_image from "./contact_image.png";
 import about_image from "./about_image.png";
-import logo from "./logo.svg";
+import logo from "./image.png";
 import dropdown_icon from "./dropdown_icon.svg";
 import menu_icon from "./menu_icon.svg";
 import cross_icon from "./cross_icon.png";
@@ -246,7 +246,7 @@ export const doctors = [
       "Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies. Dr. Davis has a strong commitment to delivering comprehensive medical care, focusing on preventive medicine, early diagnosis, and effective treatment strategies.",
     fees: 50,
     address: {
-      line1: "57th Cross, Richmond",
+      line1: "58",
       line2: "Circle, Ring Road, London",
     },
   },
