@@ -90,4 +90,4 @@ This is a **full stack web application** named **MEDICO** designed for hospitals
 
 ### 🧑‍💻 Developed By
 - Niharika Singh
-- Full Stack Developer & Healthcare Tech Enthusiast
+- Full Stack Developer 
