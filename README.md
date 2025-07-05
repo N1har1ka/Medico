@@ -55,7 +55,31 @@ This is a **full stack web application** named **MEDICO** designed for hospitals
 - **CORS** and **Middleware** for security and request handling
 
 ### 💳 Payment Gateway
-- Integration with **Razorpay** 
+- Integration with **Razorpay** in test mode.
+
+
+## 📸 Screenshots
+
+### 🏠 User Homepage
+![User Homepage](./assets/screenshots/user-homepage.png)
+
+### 📅 Book Appointment Page
+![Book Appointment](./assets/screenshots/book-appointment.png)
+
+### 💳 Online Payment Integration
+![Payment Page](./assets/screenshots/payment.png)
+
+### 👨‍⚕️ Doctor Dashboard
+![Doctor Dashboard](./assets/screenshots/doctor-dashboard.png)
+
+### 🛡️ Admin Dashboard
+![Admin Dashboard](./assets/screenshots/admin-dashboard.png)
+
+### 🔐 Doctor Profile
+![Login/Register](./assets/screenshots/doctor-profile.png)
+
+### 📱 Mobile Responsive View (Optional)
+![Mobile View](./assets/screenshots/mobile-view.png)
 
 
 ### 🤝 Contributing
